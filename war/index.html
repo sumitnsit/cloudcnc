@@ -59,14 +59,20 @@
 		<div class="col-md-3">
 			<div class="product_name">Cloud CNC <span class="product_release_name">&alpha;</span></div>
 		</div>
-		<div class="col-md-7">
+		<div class="col-md-6">
 			<div class="btn btn-sm btn-default" id="btnStart" data-status="start"><i id="axn_icon" class="glyphicon glyphicon-play"></i><span id="axn_text">Start</span></div>
 			<div class="btn btn-sm btn-default" id="btnStop" data-status="stop" style="display: none;"><i class="glyphicon glyphicon-stop"></i> Stop</div>
 
 				<!-- <div id="btnStart" class="toolbar_button axnStart" data-status="start">&nbsp;</div> -->
 				<!-- <div id="btnStop" class="toolbar_button" data-status="stop">&nbsp;</div> -->
 		</div>
-		<div class="col-md-2" style="text-align: right;">
+		<div class="col-md-3" style="text-align: right;">
+			<div id="fb-like-button" class="fb-like"
+				data-href="https://www.facebook.com/cloudcnc"
+				data-width="The pixel width of the plugin"
+				data-height="The pixel height of the plugin" data-colorscheme="light"
+				data-layout="button_count" data-action="like" data-show-faces="false"
+				data-send="false" style="margin-right: 20px; line-height: 21px;"></div>	
 			<div class="btn btn-sm btn-success" onclick="showSaveModal()">Share Program <i class="glyphicon glyphicon-share" style="color: white;"></i></div>
 		</div>
 	</div>
@@ -91,12 +97,7 @@
 	<div class="row footer" >
 		<div class="col-md-3">
 			<div>Cloud CNC &copy; 2013</div>
-			<div id="fb-like-button" class="fb-like"
-				data-href="https://www.facebook.com/cloudcnc"
-				data-width="The pixel width of the plugin"
-				data-height="The pixel height of the plugin" data-colorscheme="light"
-				data-layout="button_count" data-action="like" data-show-faces="false"
-				data-send="false"></div>				
+			
 		</div>
 		<div class="col-md-9">
 			<div><span>Tool Speed</span><span><input id="speedSlider" type="range" min="1" max="10" value="8" step="1" /></span></div>		
