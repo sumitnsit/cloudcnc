@@ -35,21 +35,7 @@
 
 	ga('create', 'UA-44578187-1', 'cloudcnc.in');
 	ga('send', 'pageview');
-	
-	function showSaveModal() {
-		$.post("/add",
-		  {
-			sourceCode: $('#editorDiv').val()
-		  },
-		  function(data,status){
-		    $('#url').val(document.location.host + document.location.pathname + "?id=" + data.trim());
-		    $('#myModal').modal('show');
-		  });
-		}
-	
-	/* $(document).ready(function() {
-		alert(getURLParameter("id"));
-	}) */
+
 </script>
 </head>
 
@@ -69,40 +55,53 @@
 	</script>
 	<!-- End code for facebook button -->
 
-	<div id="toolbar">
-		<div id="product_name">
-			Cloud CNC <span class="product_release_name">&alpha;</span>
+	<div class="row toolbar">
+		<div class="col-md-3">
+			<div class="product_name">Cloud CNC <span class="product_release_name">&alpha;</span></div>
 		</div>
-		<div id="menuButtons">
-			<div id="btnStart" class="toolbar_button axnStart"
-				data-status="start">&nbsp;</div>
-			<div id="btnStop" class="toolbar_button" data-status="stop">&nbsp;</div>
+		<div class="col-md-7">
+			<div class="btn btn-sm btn-default" id="btnStart" data-status="start"><i id="axn_icon" class="glyphicon glyphicon-play"></i><span id="axn_text">Start</span></div>
+			<div class="btn btn-sm btn-default" id="btnStop" data-status="stop" style="display: none;"><i class="glyphicon glyphicon-stop"></i> Stop</div>
 
+				<!-- <div id="btnStart" class="toolbar_button axnStart" data-status="start">&nbsp;</div> -->
+				<!-- <div id="btnStop" class="toolbar_button" data-status="stop">&nbsp;</div> -->
 		</div>
-		<button class="btn btn-primary btn-sm" onclick="showSaveModal()">Share</button>
-		<div id="socialIcons"></div>
-	</div>
-	<div id="editor">
-		<div id="lineNumbers"></div>
-		<textarea id="editorDiv"></textarea>
-	</div>
-	<div id="simulator"></div>
-	<div id="footer">
-		<div id="copyrights" class="AppleFont">Cloud CNC &copy; 2013</div>
-		<div id="email" class="AppleFont">admin@cloudcnc.in</div>
-
-		<div id="speedDiv" class="AppleFont">
-			Tool Speed<input id="speedSlider" type="range" min="1" max="10"
-				value="8" step="1">
+		<div class="col-md-2" style="text-align: right;">
+			<div class="btn btn-sm btn-success" onclick="showSaveModal()">Share Program <i class="glyphicon glyphicon-share" style="color: white;"></i></div>
 		</div>
-		<div id="fb-like-button" class="fb-like"
-			data-href="https://www.facebook.com/cloudcnc"
-			data-width="The pixel width of the plugin"
-			data-height="The pixel height of the plugin" data-colorscheme="light"
-			data-layout="button_count" data-action="like" data-show-faces="false"
-			data-send="false"></div>
 	</div>
 
+	<div class="row">
+		<div class="col-md-3" style="border-right: 1px solid #EEE;">
+			<div id="editor">
+				<div class="row">
+					<div class="col-md-2">
+						<div id="lineNumbers"></div>	
+					</div>	
+					<div class="col-md-10" id="editor_container">
+						<textarea id="editorDiv"></textarea>					
+					</div>
+				</div>
+			</div>		
+		</div>
+		<div class="col-md-9">
+			<div id="simulator"></div>	
+		</div>
+	</div>
+	<div class="row footer" >
+		<div class="col-md-3">
+			<div>Cloud CNC &copy; 2013</div>
+			<div id="fb-like-button" class="fb-like"
+				data-href="https://www.facebook.com/cloudcnc"
+				data-width="The pixel width of the plugin"
+				data-height="The pixel height of the plugin" data-colorscheme="light"
+				data-layout="button_count" data-action="like" data-show-faces="false"
+				data-send="false"></div>				
+		</div>
+		<div class="col-md-9">
+			<div><span>Tool Speed</span><span><input id="speedSlider" type="range" min="1" max="10" value="8" step="1" /></span></div>		
+		</div>
+	</div>
 
 
 	<!-- Modal -->
@@ -116,16 +115,20 @@
 					<h4 class="modal-title" id="myModalLabel">Share</h4>
 				</div>
 					<div class="modal-body">
+						<p>Share your program using the following link:</p>
 						<input class="well form-control" id="url" name="url" onclick="this.select();" type="text"/>
 					</div>
 					<div class="modal-footer">
+					<a id="share_facebook_btn" class="btn btn-sm btn-primary" href="" target="_blank">Share on Facebook</a>
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			      </div>
 			</div>
 		</div>
 	</div>
 
+	<img src="images/screen.png" style="display: none" />
 	<img src="tools/tool.bmp" style="display: none" />
+
 </body>
 <!-- Latest compiled and minified JavaScript -->
 <script

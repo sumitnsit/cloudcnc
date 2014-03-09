@@ -15,14 +15,28 @@ body {
 	overflow: hidden;
 }
 
+.footer{
+	font-size: 0.8em;
+	color: #F4F4F4;
+	background-color: #263b64;
+	line-height: 27px;
+}
+
+.footer #speedSlider{
+	display: inline-block;
+	width: 100px;
+	margin-left: 20px;
+	position: absolute;
+	margin-top: 5px;
+}
+
 .lineBreakPointDiv{
 	line-height: 20px;	
 	cursor: pointer;
 }
 
 .breakPoint{
-	/*background-color: #EEaa88;*/
-	background: -webkit-linear-gradient(left, #0B64C4 14%, #efefef 14%)
+	background-color: #CC3D3D;
 }
 
 .breakPointArea{
@@ -60,19 +74,19 @@ body {
 	height: 20px;
 }
 
-#speedDiv{
+/*#speedDiv{
 	float: right;
 	height: 100%;
 	line-height: 32px;
 	margin-right: 30px;
 	font-size: 10px;
-}
+}*/
 
-#speedDiv #speedSlider{
+/*#speedDiv #speedSlider{
 	margin-left: 20px;
 	float: right;
 	height: 25px;
-}
+}*/
 
 .AppleFont{
 	font: normal normal 18px/31px "Lucida Grande", "Lucida Sans Unicode", sans-serif;
@@ -80,20 +94,17 @@ body {
 	color:#444;
 }
 
-#product_name{
-	font: normal normal 18px/31px "Lucida Grande", "Lucida Sans Unicode", sans-serif;
-	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
-	color:#444;
-	float: left;
+.toolbar .product_name{
+	/*font: normal normal 18px/31px "Lucida Grande", "Lucida Sans Unicode", sans-serif;*/
+	font-size: 1.6em;
+	color: #F4F4F4;
 	height: 100%;
-	padding-left: 10px;
-	width: 300px;
 }
 
 .product_release_name{
 	font: normal normal 24px/35px "Lucida Grande", "Lucida Sans Unicode", sans-serif;
-	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
-	color:#5C77A7;
+	font-size: 1.6em;
+	color: #CCC;
 }
 
 #options{
@@ -224,22 +235,20 @@ body {
 	font-size: 10px;
 }
 
-#toolbar{
+.toolbar{
 	position: relative;
 	width: 100%;
-	background: -webkit-linear-gradient(rgba(233, 233, 233, 1.0), rgba(178, 178, 178, 1.0) 40px, #6A6A6A 1px, #EDEDED, #FFFFFF 40px);
-	background: -moz-linear-gradient(rgba(233, 233, 233, 1.0), rgba(178, 178, 178, 1.0) 40px, #6A6A6A 1px, #EDEDED, #FFFFFF 40px);
-	background: -o-linear-gradient(rgba(233, 233, 233, 1.0), rgba(178, 178, 178, 1.0) 40px, #6A6A6A 1px, #EDEDED, #FFFFFF 40px);
-	background: -ms-linear-gradient(rgba(233, 233, 233, 1.0), rgba(178, 178, 178, 1.0) 40px, #6A6A6A 1px, #EDEDED, #FFFFFF 40px);
-	background: linear-gradient(rgba(233, 233, 233, 1.0), rgba(178, 178, 178, 1.0) 40px, #6A6A6A 1px, #EDEDED, #FFFFFF 40px);
-	-webkit-box-shadow: 0px 1px 2px rgba(50, 50, 50, 1);
-	box-shadow: 0px 1px 2px rgba(50, 50, 50, 1);
+	padding: 0px;
+	margin: 0px;
 	z-index: 100;
+	background-color: #263b64;
+	height: 48px;
+	line-height: 48px;
 }
 
 #editor{
-	float: left;		
-	background-color: #F8F8F8;
+/*	float: left;		
+	background-color: #F8F8F8;*/
 	/*background-color: #944;	
 	color: #fff;
 	font-size: 14px;
@@ -250,22 +259,19 @@ body {
 	padding: 0px;*/
 }
 
-.row{
+/*.row{
 	color: rgb(167, 118, 163);
-}
-.row:hover {
+}*/
+/*.row:hover {
 	background-color: #fff;
-	/*background: -webkit-linear-gradient(left, #fff, #efefef 50%, #ededed);
+	background: -webkit-linear-gradient(left, #fff, #efefef 50%, #ededed);
 	background: -moz-linear-gradient(left, #fff, #efefef 50%, #ededed);
 	background: -o-linear-gradient(left, #fff, #efefef 50%, #ededed);
 	background: -ms-linear-gradient(left, #fff, #efefef 50%, #ededed);
-	background: linear-gradient(left, #fff, #efefef 50%, #ededed); 	*/
+	background: linear-gradient(left, #fff, #efefef 50%, #ededed); 	
 }
-
+*/
 .runtimeEditor{
-	float: right;
-	/*background-color: #ededed;*/
-	background-color: "red";
 	overflow: auto;
 	color: #333;
 }
@@ -286,7 +292,8 @@ body {
 }
 
 #editorDiv{
-	float: right;
+	/*float: right;*/
+	width: 100%;
 	outline: none;
 	border: none;
 	color: #555;
@@ -299,16 +306,11 @@ body {
 	resize: none;
 	padding: 0px;
 	overflow: auto;
-	background: -webkit-linear-gradient(0, #f8f8f8, #f8f8f8 267px, #ccc);
-	background: -moz-linear-gradient(0, #f8f8f8, #f8f8f8 267px, #ccc);
-	background: -ms-linear-gradient(0, #f8f8f8, #f8f8f8 267px, #ccc);
-	background: -o-linear-gradient(0, #f8f8f8, #f8f8f8 267px, #ccc);
 }
 
 #lineNumbers{
-	float: left;
 	overflow: hidden;
-	background-color: #f8f8f8;
+	/*background-color: #f8f8f8;*/
 	text-align: right;
 	color: #C0C0C0;
 }

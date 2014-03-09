@@ -2,9 +2,9 @@ var config = (function(){
 	"use strict";
 	return {
 		homeProperties: {
-			toolbarHeight: 40,
+			toolbarHeight: 48,
 			footerHeight: 30,
-			editorWidth: 300,
+			// editorWidth: 300,
 			lineNumbersWidth: 30,
 			lineHeight: 20
 		},

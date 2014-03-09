@@ -68,29 +68,38 @@ function initWorkers(){
 }
 
 function setStopped(){
+	// alert('hi');
 	$("#btnStart").data("status", "stopped");
-	$("#btnStart").addClass("axnStart");
-	$("#btnStart").removeClass("axnPause");	
+	$("#axn_icon").removeClass("glyphicon-pause");
+	$("#axn_icon").addClass("glyphicon-play");
+	$("#axn_text").text("Start");
+
+	// $("#btnStart").data("status", "stopped");
+	// $("#btnStart").addClass("axnStart");
+	// $("#btnStart").removeClass("axnPause");	
 }
 
 function setReset(){
 	$("#btnStart").data("status", "start");
-	$("#btnStart").addClass("axnStart");
-	$("#btnStart").removeClass("axnPause");	
-	$("#btnStop").removeClass("axnStop");
+	$("#axn_icon").removeClass("glyphicon-pause");
+	$("#axn_icon").addClass("glyphicon-play");
+	$("#axn_text").text("Start");	
+	$("#btnStop").hide();
 }
 
 function setRunning(){
 	$("#btnStart").data("status", "running");
-	$("#btnStart").removeClass("axnStart");
-	$("#btnStart").addClass("axnPause");
-	$("#btnStop").addClass("axnStop");
+	$("#axn_icon").removeClass("glyphicon-play");
+	$("#axn_icon").addClass("glyphicon-pause");
+	$("#axn_text").text("Pause");
+	$("#btnStop").show();
 }
 
 function setPaused(){
 	$("#btnStart").data("status", "paused");
-	$("#btnStart").addClass("axnStart");
-	$("#btnStart").removeClass("axnPause");	
+	$("#axn_icon").removeClass("glyphicon-pause");
+	$("#axn_icon").addClass("glyphicon-play");
+	$("#axn_text").text("Start");
 }
 
 function stop(){
@@ -136,7 +145,7 @@ function createRunTimeEditor(codeLineArray){
 	// $("#lineNumbers").hide();
 	$("#editorDiv").hide();
 
-	var editor = document.getElementById('editor');
+	var editor = document.getElementById('editor_container');
 	var runtimeEditor = document.createElement('div');
 
 	runtimeEditor.setAttribute('class', 'runtimeEditor');
@@ -148,7 +157,7 @@ function createRunTimeEditor(codeLineArray){
 	for(var index = 0; index < codeLineArray.length; index++){
 		var rowDiv = document.createElement('div');
 		rowDiv.setAttribute('id', 'row-' + index);
-		rowDiv.setAttribute('class', 'row');
+		rowDiv.setAttribute('class', 'runtime_row');
 		
 		// var breakPointDiv = document.createElement('div');
 		// breakPointDiv.setAttribute('id', 'breakPointDiv-' + index);
@@ -346,6 +355,8 @@ function getBillet(codeArray){
 	return billet;
 }
 
+function initScreen1(){
+}
 function initScreen(){
 
 	
@@ -358,22 +369,17 @@ function initScreen(){
 
 	// Setting editor
 	$('#editor').css('height', (windowHeight - config.homeProperties.toolbarHeight - config.homeProperties.footerHeight) + 'px');
-	$('#editor').css('width', config.homeProperties.editorWidth + 'px');
+	$('#editor').css('width', "100%");
 
 	// Line numbers
 	$('#lineNumbers').css('height', (windowHeight - config.homeProperties.toolbarHeight - config.homeProperties.footerHeight) + 'px');
-	$('#lineNumbers').css('width' , (config.homeProperties.lineNumbersWidth) + 'px');
 
 	// Setting editorDiv
 	$('#editorDiv').css('height', (windowHeight - config.homeProperties.toolbarHeight - config.homeProperties.footerHeight) + 'px');
-	$('#editorDiv').width((config.homeProperties.editorWidth - config.homeProperties.lineNumbersWidth) + 'px');
-	// $('#editorDiv').css('padding-left', config.leftPadding + 'px');
-	// $('#editorDiv').css('padding-top', config.topPadding + 'px');
 
 	// Setting simulator
 	$('#simulator').css('height', (windowHeight - config.homeProperties.toolbarHeight - config.homeProperties.footerHeight) + 'px');
-	$('#simulator').css('width' , (windowWidth - config.homeProperties.editorWidth) + 'px');
-
+	$('#simulator').css('width' , "100%");
 
 	// Setting footer	
 	$('#footer').css('height', config.homeProperties.footerHeight + 'px');
@@ -381,14 +387,12 @@ function initScreen(){
 	// // Options overlay
 	// $('#options').css('height', (window.innerHeight - config.toolbarHeight - config.footerHeight) + 'px');
 
-
-
 	// Setting CNC
 	$( "#cncCanvas" ).remove();
 	var cnc = document.createElement('canvas');
 	cnc.setAttribute('id', 'cncCanvas');
 	cnc.height = (windowHeight - config.homeProperties.toolbarHeight - config.homeProperties.footerHeight);
-	cnc.width = (windowWidth - config.homeProperties.editorWidth);
+	cnc.width = (windowWidth - $("#editor").width());
 	var simulator = document.getElementById('simulator');
 	simulator.appendChild(cnc);
 
@@ -428,3 +432,18 @@ function getURLParameter(sParam)
         }
     }
 }
+
+function showSaveModal() {
+
+	$.post("/add", {
+		sourceCode : $('#editorDiv').val()
+	}, function(data, status) {
+		var share_url = document.location.host + document.location.pathname + "?id=" + data.trim()
+
+		$('#share_facebook_btn').attr('href', "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(share_url));
+		// $('#share_facebook_btn').data('href', share_url);
+		$('#url').val(share_url);
+		$('#myModal').modal('show');
+	});
+}
+
